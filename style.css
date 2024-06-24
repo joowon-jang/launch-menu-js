@@ -1,0 +1,198 @@
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+ul {
+  list-style: none;
+}
+button,
+input,
+select {
+  margin: 0;
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+iframe {
+  border: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  My Style                                  */
+/* -------------------------------------------------------------------------- */
+
+* {
+  font-family: "SUIT Variable", sans-serif;
+}
+
+.page-wrapper {
+  position: relative;
+  width: 90vw;
+  height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: bisque;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.roulette {
+  position: relative;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: rotate 3000ms ease-out;
+}
+
+.roulette-area {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  transform-origin: 100% 100%;
+  clip-path: polygon(100% 100%, 0 0, 100% 0);
+
+  span {
+    display: block;
+    font-size: 1.5rem;
+    rotate: -112.5deg;
+    padding-top: 5rem;
+  }
+}
+
+.needle {
+  position: absolute;
+  top: 5.5rem;
+  left: 50%;
+  translate: -50% 0;
+  border-top: 2rem solid black;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+}
+
+.roulette-1 {
+  background-color: red;
+  rotate: 0deg;
+}
+.roulette-2 {
+  background-color: orange;
+  rotate: 45deg;
+}
+.roulette-3 {
+  background-color: yellow;
+  rotate: 90deg;
+}
+.roulette-4 {
+  background-color: yellowgreen;
+  rotate: 135deg;
+}
+.roulette-5 {
+  background-color: darkseagreen;
+  rotate: 180deg;
+}
+.roulette-6 {
+  background-color: skyblue;
+  rotate: 225deg;
+}
+.roulette-7 {
+  background-color: dodgerblue;
+  rotate: 270deg;
+}
+.roulette-8 {
+  background-color: blueviolet;
+  rotate: 315deg;
+}
+
+.down-side {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.result {
+  background-color: pink;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 6rem;
+  font-size: 2rem;
+  font-weight: 500;
+
+  span:first-child {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+}
+
+.btn-rotate {
+  order: 1;
+  font-size: 1.5rem;
+  width: 10rem;
+  height: 4rem;
+  background-color: salmon;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
