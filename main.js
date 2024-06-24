@@ -1,3 +1,4 @@
+/* --------------------------------- 룰렛 데이터 --------------------------------- */
 const menu = {
   '특식': ['불고기','찜닭','닭볶음탕','스테이크','월남쌈','수육','아귀찜','쌈밥','낙지볶음'],
   '기타': ['초밥','짜장면','짬뽕','깐풍기','마파두부','잡채','팟타이','쌀국수','햄버거'],
@@ -9,42 +10,38 @@ const menu = {
   '찌개': ['된장찌개','김치찌개','부대찌개','순두부찌개','청국장찌개','동태찌개','비지찌개','고추장찌개','오징어찌개'],
 }
 
+// 룰렛 노드
 const roulette = document.querySelector(".roulette");
+// 버튼 노드
 const btnRotate = document.querySelector(".btn-rotate");
-const result = document.querySelector('.result');
-const spans = result.querySelectorAll('span');
+// 결과 노드
+const resultSpans = document.querySelectorAll('.result > span');
 
+/* -------------------------------- 결과 렌더링 함수 ------------------------------- */
 function renderResult(deg) {
-  let resultIndex = 0;
-
-  for(let i=0; i<=8; i++) {
-    if(deg >= 45 * i && deg < 45 * (i+1)) {
-      resultIndex = i;
-      break;
-    }
-  }
+  let resultIndex = parseInt(deg / 45, 10);
 
   const foodType = Object.keys(menu)[resultIndex];
-  console.log(foodType);
   const food = menu[foodType][Math.floor(Math.random() * 9)];
-  console.log(food);
 
   function timerHandler() {
-    spans[0].textContent = foodType;
-    spans[1].textContent = food;
+    resultSpans[0].textContent = foodType;
+    resultSpans[1].textContent = food;
   }
 
   setTimeout(timerHandler, 3000);
 }
 
+/* ------------------------------ 룰렛 이벤트 핸들링 함수 ----------------------------- */
 function handleRotateClick() {
   roulette.style.rotate = 0;
-  spans[0].textContent = '';
-  spans[1].textContent = '';
+  resultSpans[0].textContent = '';
+  resultSpans[1].textContent = '';
   const resultDeg = Math.floor(Math.random() * 18000);
   roulette.style.rotate = `${resultDeg}deg`;
 
   renderResult(resultDeg % 360);
 }
 
+/* ------------------------------- 버튼에 이벤트 추가 ------------------------------- */
 btnRotate.addEventListener("click", handleRotateClick);
