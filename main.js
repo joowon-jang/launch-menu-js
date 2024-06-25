@@ -37,11 +37,10 @@ function renderResult(deg) {
 /* ------------------------------ 룰렛 이벤트 핸들링 함수 ----------------------------- */
 function handleRotateClick() {
   clearTimeout(timer);
-  roulette.style.rotate = 0;
   resultSpans[0].textContent = '';
   resultSpans[1].textContent = '';
 
-  const resultDeg = Math.floor(Math.random() * 3600) + 7200;
+  const resultDeg = Math.floor(Math.random() * 36000);
   roulette.style.rotate = `${resultDeg}deg`;
   
 
