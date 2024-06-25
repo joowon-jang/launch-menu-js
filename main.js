@@ -18,7 +18,6 @@ const btnRotate = document.querySelector(".btn-rotate");
 const resultSpans = document.querySelectorAll('.result > span');
 
 /* -------------------------------- 결과 렌더링 함수 ------------------------------- */
-
 let timer;
 
 function renderResult(deg) {
