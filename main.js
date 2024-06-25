@@ -44,7 +44,6 @@ function handleRotateClick() {
 
   const resultDeg = Math.floor(Math.random() * 3600) + 7200;
   console.log(resultDeg);
-  roulette.style.rotate = `${resultDeg}deg`;
 
   renderResult(resultDeg % 360);
 }
