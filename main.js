@@ -17,35 +17,32 @@ const btnRotate = document.querySelector(".btn-rotate");
 // 결과 노드
 const resultSpans = document.querySelectorAll('.result > span');
 
-/* -------------------------------- 결과 렌더링 함수 ------------------------------- */
-let timer;
-
-function renderResult(deg) {
-  let resultIndex = parseInt(deg / 45, 10);
-
-  const foodType = Object.keys(menu)[resultIndex];
-  const food = menu[foodType][Math.floor(Math.random() * 9)];
-
-  function timerHandler() {
-    resultSpans[0].textContent = foodType;
-    resultSpans[1].textContent = food;
-  }
-
-  timer = setTimeout(timerHandler, 3000);
-}
+// 룰렛 회전 deg
+let deg = 0;
 
 /* ------------------------------ 룰렛 이벤트 핸들링 함수 ----------------------------- */
 function handleRotateClick() {
-  clearTimeout(timer);
+  // 결과 지우기
   resultSpans[0].textContent = '';
   resultSpans[1].textContent = '';
 
-  const resultDeg = Math.floor(Math.random() * 36000);
-  roulette.style.rotate = `${resultDeg}deg`;
-  
-
-  renderResult(resultDeg % 360);
+  deg = Math.floor(Math.random() * 36000);
+  roulette.style.rotate = `${deg}deg`;
 }
 
-/* ------------------------------- 버튼에 이벤트 추가 ------------------------------- */
+/* -------------------------------- 결과 렌더링 함수 ------------------------------- */
+function renderResult() {
+  // deg에 따라 foodType 결정
+  const index = parseInt((deg%360) / 45, 10);
+  const foodType = Object.keys(menu)[index];
+  // 정해진 foodType에서 9가지 메뉴 중 랜덤으로 food 결정
+  const food = menu[foodType][Math.floor(Math.random() * 9)];
+
+  // 결과 렌더링
+  resultSpans[0].textContent = foodType;
+  resultSpans[1].textContent = food;
+}
+
+/* ------------------------------- 버튼, 룰렛에 이벤트 추가 ------------------------------- */
 btnRotate.addEventListener("click", handleRotateClick);
+roulette.addEventListener('transitionend',renderResult);
